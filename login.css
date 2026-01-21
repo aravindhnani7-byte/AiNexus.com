@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+.bg {
+    text-align: center;
+    background-image: url('https://static.vecteezy.com/system/resources/previews/011/635/825/non_2x/abstract-square-interface-modern-background-concept-fingerprint-digital-scanning-visual-security-system-authentication-login-vector.jpg');
+    background-size: cover;
+    min-height: 100vh;
+    background-position: center;
+    padding-top: 5vh;
+}
+
+.img {
+    height: 20vh;
+    border-radius: 20px;
+}
+
+.head {
+    color: white;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.inp {
+    border: none;
+    border-radius: 20px;
+    width: 80%;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    backdrop-filter: blur(5px);
+    transition: transform 0.3s ease;
+}
+
+.inp:focus {
+    transform: scale(1.05);
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.email {
+    margin: 15px;
+    width: 400px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 35px;
+    color: white;
+}
+
+.loginbtn {
+    height: 50px;
+    width: 200px;
+    border-radius: 25px;
+    border: none;
+    background-color: #cbaf58;
+    color: white;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+.loginbtn:hover {
+    transform: scale(1.1);
+    background-color: #e0c56e;
+    cursor: pointer;
+}
+
+p {
+    color: aliceblue;
+}
