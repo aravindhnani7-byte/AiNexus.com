@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Nexus | The Ultimate Tool Directory</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+ <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            black: '#0a0a0f',
+                            dark: '#13131f',
+                            light: '#1c1c2e',
+                            accent: '#00f0ff',
+                            secondary: '#7000ff',
+                            text: '#e0e0e0'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Orbitron', 'sans-serif'],
+                        body: ['Rajdhani', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0a0a0f;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0f; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1c1c2e; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00f0ff; 
+        }
+
+        /* Neon Glow Effects */
+        .neon-text {
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+        }
+        .neon-border {
+            box-shadow: 0 0 10px rgba(112, 0, 255, 0.3);
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+            border-color: #00f0ff;
+        }
+
+        /* Animated Background Grid */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: 
+                linear-gradient(rgba(19, 19, 31, 0.9), rgba(10, 10, 15, 1)), 
+                linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+            background-size: 100% 100%, 40px 40px, 40px 40px;
+            background-position: center bottom;
+            z-index: -1;
+            perspective: 500px;
+            transform-style: preserve-3d;
+        }
+    </style>
+</head>
+<body class="font-body antialiased min-h-screen flex flex-col">
+
+    <!-- Background -->
+    <div class="bg-grid"></div>
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-cyber-black/90 backdrop-blur-md border-b border-cyber-light">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-2 group">
+                <i class="fas fa-brain text-3xl text-cyber-accent group-hover:animate-pulse"></i>
+                <span class="font-heading text-2xl font-bold tracking-wider text-white">AI<span class="text-cyber-accent">NEXUS</span></span>
+            </a>
+            
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#" onclick="showSection('home')" class="text-gray-400 hover:text-cyber-accent transition-colors font-bold uppercase tracking-widest text-sm">Home</a>
+                <a href="#" onclick="scrollToTools()" class="text-gray-400 hover:text-cyber-accent transition-colors font-bold uppercase tracking-widest text-sm">Directory</a>
+                <button onclick="toggleModal('contactModal')" class="text-gray-400 hover:text-cyber-accent transition-colors font-bold uppercase tracking-widest text-sm">Contact</button>
+            </div>
+
+            <div class="flex items-center space-x-4">
+                <button onclick="toggleModal('loginModal')" class="text-sm font-bold text-cyber-accent border border-cyber-accent px-4 py-1.5 rounded hover:bg-cyber-accent hover:text-cyber-black transition-all uppercase">Login</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home-section" class="relative pt-20 pb-16 md:pt-32 md:pb-24 overflow-hidden">
+        <div class="container mx-auto px-4 text-center z-10 relative">
+            <div class="inline-block px-3 py-1 mb-4 border border-cyber-secondary rounded-full bg-cyber-secondary/10">
+                <span class="text-cyber-secondary text-xs font-bold tracking-[0.2em] uppercase">The Future is Here</span>
+            </div>
+            <h1 class="font-heading text-5xl md:text-7xl font-black mb-6 leading-tight">
+                Curated <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-accent to-cyber-secondary neon-text">Intelligence</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10">
+                Explore the ultimate directory of AI tools. From image generation to coding assistants, discover the technologies shaping tomorrow.
+            </p>
+            
+            <!-- Search Bar -->
+            <div class="max-w-xl mx-auto relative group">
+                <div class="absolute -inset-0.5 bg-gradient-to-r from-cyber-accent to-cyber-secondary rounded-lg blur opacity-30 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+                <div class="relative flex items-center bg-cyber-light rounded-lg">
+                    <i class="fas fa-search text-gray-400 ml-4"></i>
+                    <input type="text" id="searchInput" placeholder="Find an AI tool (e.g., 'Gemini', 'Video', 'Code')..." 
+                        class="w-full bg-transparent border-none focus:ring-0 text-white px-4 py-4 placeholder-gray-500 font-body text-lg h-14 rounded-lg focus:outline-none">
+                </div>
+            </div>
+        </div>
+
+        <!-- Decorative Elements -->
+        <div class="absolute top-1/4 left-10 w-24 h-24 bg-cyber-secondary rounded-full blur-[100px] opacity-20 animate-pulse-slow"></div>
+        <div class="absolute bottom-10 right-10 w-32 h-32 bg-cyber-accent rounded-full blur-[100px] opacity-20 animate-pulse-slow"></div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8 flex-grow" id="directory-section">
+        
+        <!-- Category Tabs -->
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+            <button onclick="filterTools('all')" class="tab-btn active px-6 py-2 rounded-full border border-cyber-light bg-cyber-light hover:border-cyber-accent transition-all text-sm font-bold uppercase tracking-wider" data-category="all">All Tools</button>
+            <button onclick="filterTools('image')" class="tab-btn px-6 py-2 rounded-full border border-cyber-light bg-cyber-black hover:border-cyber-accent transition-all text-sm font-bold uppercase tracking-wider text-gray-400" data-category="image">Image Gen</button>
+            <button onclick="filterTools('video')" class="tab-btn px-6 py-2 rounded-full border border-cyber-light bg-cyber-black hover:border-cyber-accent transition-all text-sm font-bold uppercase tracking-wider text-gray-400" data-category="video">Video</button>
+            <button onclick="filterTools('coding')" class="tab-btn px-6 py-2 rounded-full border border-cyber-light bg-cyber-black hover:border-cyber-accent transition-all text-sm font-bold uppercase tracking-wider text-gray-400" data-category="coding">Coding</button>
+            <button onclick="filterTools('audio')" class="tab-btn px-6 py-2 rounded-full border border-cyber-light bg-cyber-black hover:border-cyber-accent transition-all text-sm font-bold uppercase tracking-wider text-gray-400" data-category="audio">Audio</button>
+            <button onclick="filterTools('ppt')" class="tab-btn px-6 py-2 rounded-full border border-cyber-light bg-cyber-black hover:border-cyber-accent transition-all text-sm font-bold uppercase tracking-wider text-gray-400" data-category="ppt">Presentation</button>
+        </div>
+
+        <!-- Tools Grid -->
+        <div id="tools-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Tools will be injected here by JS -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="empty-state" class="hidden text-center py-20">
+            <i class="fas fa-robot text-6xl text-gray-600 mb-4 animate-bounce"></i>
+            <h3 class="text-2xl font-heading text-white">No tools found</h3>
+            <p class="text-gray-400">Try adjusting your search query.</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-cyber-dark border-t border-cyber-light mt-auto">
+        <div class="container mx-auto px-4 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <span class="font-heading text-xl font-bold text-white">AI<span class="text-cyber-accent">NEXUS</span></span>
+                    <p class="text-gray-500 text-sm mt-1">Exploring the boundaries of artificial intelligence.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-twitter text-xl"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-github text-xl"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-discord text-xl"></i></a>
+                </div>
+            </div>
+            <div class="text-center mt-8 pt-8 border-t border-cyber-light/50 text-gray-600 text-xs">
+                &copy; 2026 AI Nexus. All rights reserved. Designed with <i class="fas fa-heart text-red-500"></i> by AI.
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODALS -->
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="fixed inset-0 z-[100] hidden">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="toggleModal('loginModal')"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-md bg-cyber-dark border border-cyber-light rounded-xl p-8 shadow-2xl neon-border">
+            <div class="text-center mb-6">
+                <h2 class="font-heading text-3xl font-bold text-white mb-2">Access Grid</h2>
+                <p class="text-gray-400 text-sm">Enter your credentials to proceed</p>
+            </div>
+            <form onsubmit="event.preventDefault(); alert('Login simulated!'); toggleModal('loginModal');">
+                <div class="mb-4">
+                    <label class="block text-gray-400 text-xs font-bold uppercase tracking-wider mb-2">Email</label>
+                    <input type="email" class="w-full bg-cyber-black border border-cyber-light rounded p-3 text-white focus:border-cyber-accent focus:outline-none focus:ring-1 focus:ring-cyber-accent transition-colors" placeholder="user@ainexus.com">
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-400 text-xs font-bold uppercase tracking-wider mb-2">Password</label>
+                    <input type="password" class="w-full bg-cyber-black border border-cyber-light rounded p-3 text-white focus:border-cyber-accent focus:outline-none focus:ring-1 focus:ring-cyber-accent transition-colors" placeholder="••••••••">
+                </div>
+                <button type="submit" class="w-full bg-cyber-accent text-cyber-black font-bold py-3 rounded hover:bg-white transition-colors uppercase tracking-widest">
+                    Initialize Session
+                </button>
+            </form>
+            <div class="mt-6 text-center text-sm text-gray-500">
+                Don't have an ID? <a href="#" onclick="toggleModal('loginModal'); setTimeout(() => toggleModal('registerModal'), 200)" class="text-cyber-accent hover:underline">Register</a>
+            </div>
+            <button onclick="toggleModal('loginModal')" class="absolute top-4 right-4 text-gray-500 hover:text-white">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="fixed inset-0 z-[100] hidden">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="toggleModal('registerModal')"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-md bg-cyber-dark border border-cyber-light rounded-xl p-8 shadow-2xl neon-border">
+            <div class="text-center mb-6">
+                <h2 class="font-heading text-3xl font-bold text-white mb-2">Join Nexus</h2>
+                <p class="text-gray-400 text-sm">Create your digital identity</p>
+            </div>
+            <form onsubmit="event.preventDefault(); alert('Registration simulated!'); toggleModal('registerModal');">
+                <div class="mb-4">
+                    <label class="block text-gray-400 text-xs font-bold uppercase tracking-wider mb-2">Email</label>
+                    <input type="email" class="w-full bg-cyber-black border border-cyber-light rounded p-3 text-white focus:border-cyber-accent focus:outline-none transition-colors">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-400 text-xs font-bold uppercase tracking-wider mb-2">Password</label>
+                    <input type="password" class="w-full bg-cyber-black border border-cyber-light rounded p-3 text-white focus:border-cyber-accent focus:outline-none transition-colors">
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-400 text-xs font-bold uppercase tracking-wider mb-2">Confirm Password</label>
+                    <input type="password" class="w-full bg-cyber-black border border-cyber-light rounded p-3 text-white focus:border-cyber-accent focus:outline-none transition-colors">
+                </div>
+                <button type="submit" class="w-full bg-cyber-secondary text-white font-bold py-3 rounded hover:bg-purple-600 transition-colors uppercase tracking-widest">
+                    Create Account
+                </button>
+            </form>
+            <div class="mt-6 text-center text-sm text-gray-500">
+                Already registered? <a href="#" onclick="toggleModal('registerModal'); setTimeout(() => toggleModal('loginModal'), 200)" class="text-cyber-accent hover:underline">Login</a>
+            </div>
+            <button onclick="toggleModal('registerModal')" class="absolute top-4 right-4 text-gray-500 hover:text-white">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="fixed inset-0 z-[100] hidden">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="toggleModal('contactModal')"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-lg bg-cyber-dark border border-cyber-light rounded-xl p-8 shadow-2xl neon-border">
+            <div class="text-center mb-6">
+                <h2 class="font-heading text-3xl font-bold text-white mb-2">Establish Uplink</h2>
+                <p class="text-gray-400 text-sm">Send a message to the core team</p>
+            </div>
+            <form onsubmit="event.preventDefault(); alert('Message sent!'); toggleModal('contactModal');">
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label class="block text-gray-400 text-xs font-bold uppercase tracking-wider mb-2">Name</label>
+                        <input type="text" class="w-full bg-cyber-black border border-cyber-light rounded p-3 text-white focus:border-cyber-accent focus:outline-none transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-gray-400 text-xs font-bold uppercase tracking-wider mb-2">Email</label>
+                        <input type="email" class="w-full bg-cyber-black border border-cyber-light rounded p-3 text-white focus:border-cyber-accent focus:outline-none transition-colors">
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-400 text-xs font-bold uppercase tracking-wider mb-2">Subject</label>
+                    <input type="text" class="w-full bg-cyber-black border border-cyber-light rounded p-3 text-white focus:border-cyber-accent focus:outline-none transition-colors">
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-400 text-xs font-bold uppercase tracking-wider mb-2">Message</label>
+                    <textarea rows="4" class="w-full bg-cyber-black border border-cyber-light rounded p-3 text-white focus:border-cyber-accent focus:outline-none transition-colors"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-cyber-accent text-cyber-black font-bold py-3 rounded hover:bg-white transition-colors uppercase tracking-widest">
+                    Transmit Data
+                </button>
+            </form>
+            <div class="mt-6 flex justify-center space-x-6">
+                <a href="mailto:mockinthe@gmail.com" class="text-gray-400 hover:text-cyber-accent"><i class="fas fa-envelope mr-2"></i>Email</a>
+                <a href="tel:+917207702245" class="text-gray-400 hover:text-cyber-accent"><i class="fas fa-phone mr-2"></i>Call</a>
+            </div>
+            <button onclick="toggleModal('contactModal')" class="absolute top-4 right-4 text-gray-500 hover:text-white">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
